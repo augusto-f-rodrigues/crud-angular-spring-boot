@@ -7,10 +7,9 @@ import { Course } from '../model/course';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
+  courses: Course[] = [{ _id: '1', category: 'front-end', name: 'Angular' }];
 
-  courses: Course[] = [];
-  
-  displayedColumns = ['name','category'];
+  displayedColumns = ['name', 'category'];
 
   ngOnInit(): void {}
 }
