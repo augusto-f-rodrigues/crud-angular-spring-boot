@@ -10,9 +10,20 @@ import { Course } from '../model/course';
 export class CoursesService {
   constructor(private httpClient: HttpClient) {}
 
-  private API: string = '/assets/courses.json';
+  private API: string = 'api/courses';
 
   list() {
-    return this.httpClient.get<Course[]>(this.API).pipe(delay(1000), first());
+    return this.httpClient.get<Course[]>(this.API).pipe(
+      //delay(1000),
+      first()
+    );
+  }
+
+  loadById(id: string){
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
+  }
+
+  save(data: Partial<Course>) {
+    return this.httpClient.post<Course>(this.API, data).pipe(first());
   }
 }
